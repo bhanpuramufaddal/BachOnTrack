@@ -1,0 +1,7 @@
+train.jsonl
+validation.jsonl
+mistral_finetuning.ipynb
+datasets
+__pycache__
+.ipynb_checkpoints
+.env
