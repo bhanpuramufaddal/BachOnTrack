@@ -9,6 +9,51 @@ class MusicPiece:
     pitch: str
     parent_composition: str
 
+key_mapping = {
+    'C': 'C Major',
+    'C#': 'C# Major',
+    'Cb': 'C♭ Major',
+    'Cm': 'C Minor',
+    'C#m': 'C# Minor',
+    'Cbm': 'C♭ Minor',
+    'D': 'D Major',
+    'D#': 'D# Major',
+    'Db': 'D♭ Major',
+    'Dm': 'D Minor',
+    'D#m': 'D# Minor',
+    'Dbm': 'D♭ Minor',
+    'E': 'E Major',
+    'E#': 'E# Major',
+    'Eb': 'E♭ Major',
+    'Em': 'E Minor',
+    'E#m': 'E# Minor',
+    'Ebm': 'E♭ Minor',
+    'F': 'F Major',
+    'F#': 'F# Major',
+    'Fb': 'F♭ Major',
+    'Fm': 'F Minor',
+    'F#m': 'F# Minor',
+    'Fbm': 'F♭ Minor',
+    'G': 'G Major',
+    'G#': 'G# Major',
+    'Gb': 'G♭ Major',
+    'Gm': 'G Minor',
+    'G#m': 'G# Minor',
+    'Gbm': 'G♭ Minor',
+    'A': 'A Major',
+    'A#': 'A# Major',
+    'Ab': 'A♭ Major',
+    'Am': 'A Minor',
+    'A#m': 'A# Minor',
+    'Abm': 'A♭ Minor',
+    'B': 'B Major',
+    'B#': 'B# Major',
+    'Bb': 'B♭ Major',
+    'Bm': 'B Minor',
+    'B#m': 'B# Minor',
+    'Bbm': 'B♭ Minor'
+}
+
 def get_full_key_name(key: str) -> str:
     """
     Converts a shorthand key notation to its full name.
@@ -19,50 +64,6 @@ def get_full_key_name(key: str) -> str:
     Returns:
     str: The full name of the key.
     """
-    key_mapping = {
-        'C': 'C Major',
-        'C#': 'C# Major',
-        'Cb': 'C♭ Major',
-        'Cm': 'C Minor',
-        'C#m': 'C# Minor',
-        'Cbm': 'C♭ Minor',
-        'D': 'D Major',
-        'D#': 'D# Major',
-        'Db': 'D♭ Major',
-        'Dm': 'D Minor',
-        'D#m': 'D# Minor',
-        'Dbm': 'D♭ Minor',
-        'E': 'E Major',
-        'E#': 'E# Major',
-        'Eb': 'E♭ Major',
-        'Em': 'E Minor',
-        'E#m': 'E# Minor',
-        'Ebm': 'E♭ Minor',
-        'F': 'F Major',
-        'F#': 'F# Major',
-        'Fb': 'F♭ Major',
-        'Fm': 'F Minor',
-        'F#m': 'F# Minor',
-        'Fbm': 'F♭ Minor',
-        'G': 'G Major',
-        'G#': 'G# Major',
-        'Gb': 'G♭ Major',
-        'Gm': 'G Minor',
-        'G#m': 'G# Minor',
-        'Gbm': 'G♭ Minor',
-        'A': 'A Major',
-        'A#': 'A# Major',
-        'Ab': 'A♭ Major',
-        'Am': 'A Minor',
-        'A#m': 'A# Minor',
-        'Abm': 'A♭ Minor',
-        'B': 'B Major',
-        'B#': 'B# Major',
-        'Bb': 'B♭ Major',
-        'Bm': 'B Minor',
-        'B#m': 'B# Minor',
-        'Bbm': 'B♭ Minor'
-    }
 
     return key_mapping.get(key, "Unknown Key")
 
@@ -119,6 +120,10 @@ def get_last_line_of_abc_sequence(abc_notation: str) -> str:
     lines = abc_notation.split('\n')
     return lines[-1]
 
+def get_abc_sequence(note):
+    splits = re.split(r'V:[0-9]+', note)
+    return splits[-1]
+
 def get_voice_list(note):
     key = get_key_from_abc(note)
 
@@ -134,7 +139,7 @@ def get_voice_list(note):
 
         actual_note = splits[i + num_tags]
 
-        voice = prefix + '\n' + f"V:{i}" + '\n' + splits[i] + '\n' + f"V:{i}" + '\n' + actual_note
+        voice = prefix + '\n' + f"V:{i}" + splits[i] + '\n' + f"V:{i}" + '\n' + actual_note
         voice = re.sub(r'score 1(?: \d)*', 'score 1', voice)
         voice = re.sub(r'V:[0-9]', 'V:1', voice)
 

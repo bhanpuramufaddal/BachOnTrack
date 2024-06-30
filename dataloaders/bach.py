@@ -145,7 +145,7 @@ def create_dataset(dest_dir, num_rows):
     all_data = all_data.sample(frac=1, random_state=42)
     
     train_data = all_data.iloc[:num_rows, :]
-    test_data = all_data.iloc[num_rows:100, :]
+    test_data = all_data.iloc[num_rows:num_rows + 100, :]
 
     train_data = postprocess_df(train_data)
     test_data = postprocess_df(test_data)  

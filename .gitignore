@@ -5,3 +5,9 @@ datasets
 __pycache__
 .ipynb_checkpoints
 .env
+flagged
+PlayGround.ipynb
+output_files
+soundfonts
+.DS_Store
+bach_abc.parquet

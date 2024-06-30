@@ -14,3 +14,4 @@ if ! python get_info.py --training_steps $training_steps; then
 fi
 
 python finetune.py --training_steps $training_steps
+python plot_train_loss.py

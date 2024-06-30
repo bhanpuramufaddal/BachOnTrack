@@ -1,7 +1,7 @@
 import os
 from mistralai.client import MistralClient
 from mistralai.models.jobs import TrainingParameters
-from dotenv import load_dotenv
+from dotenv import load_dotenv, set_key 
 from argparse import ArgumentParser
 import time
 
@@ -38,6 +38,10 @@ def run(train_file, validation_file, training_steps):
     check_completed_job(ft_job.id)
     ft_job = client.jobs.retrieve(ft_job.id)
     ft_model = ft_job.fine_tuned_model
+
+    set_key(dotenv_path='.env', key_to_set="FINETUNED_MODEL_ID", value_to_set=ft_model)
+    set_key(dotenv_path='.env', key_to_set="JOB_ID", value_to_set=ft_job.id)
+
     print(f"Fine-tuned model endpoint: {ft_model}")
 
 if __name__ == "__main__":
