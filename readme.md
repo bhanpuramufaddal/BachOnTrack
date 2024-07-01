@@ -8,6 +8,9 @@ We have trained the model on 2 kinds of tasks:
 
 We have created interface in Gradio to interact with our model.
 
+### Datasets
+We have used [MusicPile](https://huggingface.co/datasets/m-a-p/MusicPile) dataset as a source and processed it to create our own SFT Dataset. The code for processing the dataset can be found [here](BachOnTrack/dataloaders/bach.py).
+
 ### How to Run the code
 
 ```sh
@@ -48,3 +51,7 @@ This script combines above 2 tasks, it uses autocompletion followed by adding mu
 ```
 python make_song_gradio.py
 ```
+
+### Presentation
+#### [Video](https://drive.google.com/file/d/1X8h3CqkjCTflOl46gcovunlC1YoY4J_A/view?usp=drive_link)
+#### [Google Slides](https://docs.google.com/presentation/d/11IcnbdRHho4NRhtQzwq22lT9n8xiBSqabtFkFf6LIgQ/edit?usp=drive_link)
