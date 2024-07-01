@@ -9,7 +9,7 @@ We have trained the model on 2 kinds of tasks:
 We have created interface in Gradio to interact with our model.
 
 ### Datasets
-We have used [MusicPile](https://huggingface.co/datasets/m-a-p/MusicPile) dataset as a source and processed it to create our own SFT Dataset. The code for processing the dataset can be found [here](BachOnTrack/dataloaders/bach.py).
+We have used [MusicPile](https://huggingface.co/datasets/m-a-p/MusicPile) dataset as a source and processed it to create our own SFT Dataset. The code for processing the dataset can be found [here](dataloaders/bach.py).
 
 ### How to Run the code
 
